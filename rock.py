@@ -1,4 +1,5 @@
 import random
+
 def opciones():
     option=('rock', 'paper', 'scissors')
     user_option=input('choose option: ')
@@ -6,6 +7,7 @@ def opciones():
     print('User option =>', user_option)
     print('Computer option =>', comput_option)
     return user_option,comput_option
+ 
 
 def rules(user_option,comput_option,win_user, win_computer):
     if user_option==comput_option:
@@ -28,7 +30,6 @@ def rules(user_option,comput_option,win_user, win_computer):
         else:
             win_computer+=1
     return win_user,win_computer
-    
 def run():
 
     win_user=0
@@ -55,4 +56,3 @@ def run():
             print('win user game')
             break
 run()
-
