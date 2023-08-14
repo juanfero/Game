@@ -1,26 +1,15 @@
 import random
-option=('rock', 'paper', 'scissors')
-win_user=0
-win_computer=0
-rounds=0
 
-while True:
-
-    print('rounds: ', rounds )
-
-    print('win_user: ', win_user)
-    print('win_computer: ', win_computer )
-
+def opciones():
+    option=('rock', 'paper', 'scissors')
     user_option=input('choose option: ')
-    rounds+=1
+    comput_option=random.choices(option)
+    print('User option =>', user_option)
+    print('Computer option =>', comput_option)
+    return user_option,comput_option
+ 
 
-    if not user_option in option:
-        print('nombre mal digitado')
-        continue
-
-    comput_option=random.choice(option)
-
-
+def rules(user_option,comput_option,win_user, win_computer):
     if user_option==comput_option:
         print('empate')
     elif user_option=='rock':
@@ -40,17 +29,30 @@ while True:
             win_user+=1
         else:
             win_computer+=1
-    
-    if win_user==4:
-        print('win user game')
-        break
+    return win_user,win_computer
+def run():
 
-    if win_computer==4:
-        print('win computer game')
-        break
+    win_user=0
+    win_computer=0
+    rounds=0
 
+    while True:
+        print('*' * 10)
+        print('ROUND', rounds)
+        print('*' * 10)
+        print('computer_wins', win_computer)
+        print('user_wins', win_user)
+        rounds+=1
+        print('rounds: ', rounds )
 
+        user_option, comput_option = opciones()
+        win_user, win_computer = rules(user_option, comput_option, win_user, win_computer)
 
+        if win_computer==2:
+            print('win computer game')
+            break
 
-
-
+        if win_user==2:
+            print('win user game')
+            break
+run()
